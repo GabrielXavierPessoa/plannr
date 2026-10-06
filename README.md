@@ -1,53 +1,20 @@
 # Plannr
 
-Sistema de agendamento de serviços para diferentes estabelecimentos.
+Sistema de agendamento de serviços para diferentes tipos de estabelecimentos. Este repositório está em desenvolvimento e o MVP está em fase de planejamento.
 
-## Sobre o projeto
+## Tecnologias planejadas
 
-O Plannr é um sistema que permite aos usuários consultar estabelecimentos, visualizar os serviços disponíveis e realizar agendamentos de acordo com os horários de funcionamento e a disponibilidade.
-
-O projeto está sendo desenvolvido como um projeto acadêmico e de portfólio.
-
-## Funcionalidades do MVP
-
-- Listagem de estabelecimentos.
-- Visualização dos serviços oferecidos por cada estabelecimento.
-- Seleção de serviço, data e horário disponíveis.
-- Cadastro e login de usuários.
-- Confirmação automática de agendamentos disponíveis.
-- Consulta e cancelamento dos próprios agendamentos.
-- Prevenção de conflitos de horário para um mesmo estabelecimento.
-
-## Tecnologias
-
-- **Frontend:** next.js.
-- **Backend:** Java e Spring Boot.
+- **Frontend:** Next.js, React e TypeScript.
+- **Backend:** Java com Spring Boot.
 - **Banco de dados:** MySQL.
-- **Versionamento:** Git e GitHub.
 
-## Estrutura do projeto
+## Documentação
 
-```text
-plannr/
-├── frontend/
-├── backend/
-├── database/
-├── docs/
-├── .gitignore
-└── README.md
-```
-
-## Organização
-
-- `frontend/`: interface do usuário.
-- `backend/`: lógica de negócio e API.
-- `database/`: scripts e documentação do banco de dados.
-- `docs/`: documentação do projeto.
-
-## Status
-
-Em desenvolvimento.
+- [Arquitetura e escopo do MVP](docs/architecture.md)
+- [Desenvolvimento local](docs/local-development.md)
 
 ## Equipe
 
-Projeto desenvolvido em equipe para fins acadêmicos e de portfólio.
+- **Gabriel Xavier:** frontend e integração com a API.
+- **Richard:** backend Java/Spring Boot e participação na definição do banco.
+- **Laís:** apoio na modelagem e organização do banco junto com Richard.
