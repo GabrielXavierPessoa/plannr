@@ -21,6 +21,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleUser role = RoleUser.client;
 
+    @OneToOne(mappedBy = "user")
+    private Client client;
+
 
     // ========== CONSTRUCTORS ==========
     public User() {}
