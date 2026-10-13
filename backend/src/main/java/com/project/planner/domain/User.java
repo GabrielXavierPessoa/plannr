@@ -24,6 +24,9 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Client client;
 
+    @OneToOne(mappedBy = "user")
+    private Provider provider;
+
 
     // ========== CONSTRUCTORS ==========
     public User() {}
@@ -51,6 +54,15 @@ public class User {
     public RoleUser getRole() {
         return role;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
     // =============================
 
     // ========== SETTERS ==========
@@ -64,5 +76,13 @@ public class User {
 
     public void setRole(RoleUser role) {
         this.role = role;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 }
