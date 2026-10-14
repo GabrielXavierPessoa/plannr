@@ -1,30 +1,7 @@
 import ServiceCard from "@/components/ServiceCard";
 import Header from "@/components/Header";
-
-// Dados provisórios para demonstração; ainda não vêm do banco de dados.
-const services = [
-  {
-    name: "Barbeiro",
-    description: "Corte de cabelo e barba com profissional experiente.",
-    price: 45,
-    durationMinutes: 45,
-    illustration: "barber" as const,
-  },
-  {
-    name: "Manicure",
-    description: "Tratamento completo para unhas com produtos de qualidade.",
-    price: 35,
-    durationMinutes: 60,
-    illustration: "manicure" as const,
-  },
-  {
-    name: "Massagem",
-    description: "Sessão de massagem relaxante para aliviar o estresse.",
-    price: 90,
-    durationMinutes: 50,
-    illustration: "massage" as const,
-  },
-];
+import Link from "next/link";
+import { services } from "@/lib/services";
 
 export default function Home() {
   return (
@@ -40,12 +17,12 @@ export default function Home() {
             Escolha o serviço, o dia e o horário. Sem ligações, sem espera.
           </p>
           <div>
-            <a
-              href="#"
+            <Link
+              href="/services"
               className="inline-block rounded-lg bg-[#1D4ED8] px-8 py-4 font-bold text-white no-underline transition duration-200 ease-out hover:bg-[#1E40AF] hover:shadow-md active:scale-[0.98]"
             >
               Agendar agora
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -61,14 +38,12 @@ export default function Home() {
               <ServiceCard key={service.name} service={service} />
             ))}
           </div>
-          <div>
-            <button>
-              Clique aqui para
-              <a href="#" className="text-[#1D4ED8] hover:text-[#1E40AF] underline padding-left-1.5">
-                 ver mais
-              </a>
-            </button>
-          </div>
+          <Link
+            href="/services"
+            className="w-fit text-[#1D4ED8] underline hover:text-[#1E40AF]"
+          >
+            Ver todos os serviços
+          </Link>
         </section>
       </main>
     </div>

@@ -1,21 +1,10 @@
+import Link from "next/link";
+import { serviceCurrency, type Service } from "@/lib/services";
 import styles from "./ServiceCard.module.css";
-
-type Service = {
-  name: string;
-  description: string;
-  price: number;
-  durationMinutes: number;
-  illustration: "barber" | "manicure" | "massage";
-};
 
 type ServiceCardProps = {
   service: Service;
 };
-
-const currency = new Intl.NumberFormat("pt-BR", {
-  style: "currency",
-  currency: "BRL",
-});
 
 const illustrations = {
   barber: (
@@ -43,10 +32,11 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   return (
     <article className={styles.card}>
       <div
-        aria-label={`Ilustração de ${service.name}`}
+        aria-label={`Foto de ${service.name} será adicionada depois`}
         role="img"
         className={styles.illustration}
       >
+        <span className={styles.photoPlaceholder}>Foto em breve</span>
         <div className={styles.illustrationBadge}>
           <svg
             aria-hidden="true"
@@ -70,14 +60,14 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <div className={styles.details}>
           <div>
             <p className={styles.priceLabel}>Preço (exemplo)</p>
-            <p className={styles.price}>{currency.format(service.price)}</p>
+            <p className={styles.price}>{serviceCurrency.format(service.price)}</p>
           </div>
           <p className={styles.duration}>{service.durationMinutes} min</p>
         </div>
 
-        <button type="button" className={styles.button}>
+        <Link href={`/services/${service.slug}`} className={styles.button}>
           Ver detalhes
-        </button>
+        </Link>
       </div>
     </article>
   );

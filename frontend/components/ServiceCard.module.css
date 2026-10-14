@@ -23,6 +23,12 @@
   background: linear-gradient(135deg, #eff4ff 0%, #e7eeff 50%, #dce7ff 100%);
 }
 
+.photoPlaceholder {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 /* .illustrationBadge {
   display: flex;
   width: 5rem;
@@ -105,6 +111,9 @@
 }
 
 .button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
   border-radius: 0.5rem;
   background: #1d4ed8;
