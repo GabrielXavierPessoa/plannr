@@ -4,6 +4,9 @@ import com.project.planner.domain.Client;
 import com.project.planner.domain.User;
 import com.project.planner.dto.client.ClientRequestDTO;
 import com.project.planner.dto.client.ClientResponseDTO;
+import com.project.planner.exception.BadRequestException;
+import com.project.planner.exception.BusinessRulesException;
+import com.project.planner.exception.ResourceNotFoundException;
 import com.project.planner.repository.ClientRepository;
 import com.project.planner.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,21 +33,23 @@ public class ClientService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    static String validator = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\\-_=+]).{8,20}$";
+
+
     @Transactional(readOnly = true)
     public List<ClientResponseDTO> findAll() {
         return clientRepository.findAll().stream()
-                .map(client -> new ClientResponseDTO(client))
+                .map(ClientResponseDTO::new)
                 .toList();
     }
 
     @Transactional
     public ClientResponseDTO save(ClientRequestDTO dto) {
         if(userRepository.existsByEmail(dto.getEmail())) {
-            throw new IllegalArgumentException("O email já existe na base de dados");
+            throw new BusinessRulesException("This E-mail already registered in database");
         }
 
         String passwordHash = passwordEncoder.encode(dto.getPassword());
-
         User user = new User(dto.getEmail(), passwordHash);
 
         Client client = new Client();
@@ -55,5 +60,14 @@ public class ClientService {
         Client saveClient = clientRepository.save(client);
 
         return new ClientResponseDTO(saveClient);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        if(!clientRepository.existsById(id) || !userRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Id " + id + "not found");
+        }
+
+        clientRepository.deleteById(id);
     }
 }
