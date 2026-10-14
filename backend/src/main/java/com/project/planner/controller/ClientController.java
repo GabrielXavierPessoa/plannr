@@ -3,6 +3,7 @@ package com.project.planner.controller;
 import com.project.planner.dto.client.ClientRequestDTO;
 import com.project.planner.dto.client.ClientResponseDTO;
 import com.project.planner.service.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientResponseDTO> create(@RequestBody ClientRequestDTO dto) {
+    public ResponseEntity<ClientResponseDTO> create(@Valid @RequestBody ClientRequestDTO dto) {
         ClientResponseDTO response = clientService.save(dto);
 
         return ResponseEntity
