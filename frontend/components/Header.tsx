@@ -1,4 +1,8 @@
-export default function Header() {
+type HeaderProps = {
+  activePage?: "services";
+};
+
+export default function Header({ activePage }: HeaderProps) {
   return (
     <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-5 md:px-20">
       <div className="flex items-center gap-3 text-xl font-bold text-slate-900">
@@ -25,7 +29,15 @@ export default function Header() {
         <a href="#" className="text-slate-900 no-underline">
           Início
         </a>
-        <a href="#" className="text-slate-900 no-underline">
+        <a
+          href="#"
+          aria-current={activePage === "services" ? "page" : undefined}
+          className={
+            activePage === "services"
+              ? "font-bold text-[#1D4ED8] no-underline"
+              : "text-slate-900 no-underline"
+          }
+        >
           Serviços
         </a>
         <a href="#" className="text-slate-900 no-underline">

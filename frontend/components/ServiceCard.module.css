@@ -15,7 +15,7 @@
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-.illustration {
+.imagePlaceholder {
   display: flex;
   height: 10rem;
   align-items: center;
@@ -27,29 +27,6 @@
   color: #475569;
   font-size: 0.875rem;
   font-weight: 600;
-}
-
-/* .illustrationBadge {
-  display: flex;
-  width: 5rem;
-  height: 5rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgb(255 255 255 / 0.8);
-  border-radius: 9999px;
-  background: rgb(255 255 255 / 0.75);
-  color: #1d4ed8;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  transition: transform 200ms;
-} */
-
-.card:hover .illustrationBadge {
-  transform: scale(1.05);
-}
-
-.illustrationIcon {
-  width: 2.5rem;
-  height: 2.5rem;
 }
 
 .content {
@@ -110,24 +87,3 @@
   line-height: 1.25rem;
 }
 
-.button {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
-  border-radius: 0.5rem;
-  background: #1d4ed8;
-  padding: 0.75rem 1rem;
-  color: #fff;
-  font-weight: 600;
-  transition: background-color 200ms;
-}
-
-.button:hover {
-  background: #1e40af;
-}
-
-.button:focus-visible {
-  outline: 2px solid #1d4ed8;
-  outline-offset: 2px;
-}
