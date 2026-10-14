@@ -1,0 +1,124 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 200ms ease-out;
+}
+
+.card:hover {
+  transform: translateY(-0.25rem);
+  border-color: #a9bfef;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.illustration {
+  display: flex;
+  height: 10rem;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff4ff 0%, #e7eeff 50%, #dce7ff 100%);
+}
+
+/* .illustrationBadge {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.8);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.75);
+  color: #1d4ed8;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: transform 200ms;
+} */
+
+.card:hover .illustrationBadge {
+  transform: scale(1.05);
+}
+
+.illustrationIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.name {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.description {
+  min-height: 3rem;
+  margin: 0.5rem 0 1.25rem;
+  color: #475569;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.details {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.priceLabel,
+.price,
+.duration {
+  margin: 0;
+}
+
+.priceLabel {
+  color: #64748b;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.price {
+  margin-top: 0.25rem;
+  color: #1d4ed8;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.duration {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.button {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #1d4ed8;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 200ms;
+}
+
+.button:hover {
+  background: #1e40af;
+}
+
+.button:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}

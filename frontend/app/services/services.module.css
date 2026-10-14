@@ -1,0 +1,86 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  padding: 4rem 1.5rem;
+}
+
+.content {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background: #bfdbfe;
+  padding: 0.25rem 0.875rem;
+  color: #000;
+}
+
+.backLink:hover {
+  background: #d1d5db;
+}
+
+.backIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 1rem 0 2.5rem;
+  color: #475569;
+}
+
+.servicesGrid {
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .page {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .page {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
