@@ -1,6 +1,8 @@
 package com.project.planner.domain;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.UUID;
 
@@ -13,7 +15,8 @@ public class Client {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "public id", nullable = false, unique = true)
+    @Column(name = "public_id", length = 36, nullable = false, unique = true)
+    @JdbcTypeCode(SqlTypes.CHAR)
     private UUID publicId = UUID.randomUUID();
 
     @Column(name = "name", length = 100, nullable = false)
@@ -28,6 +31,13 @@ public class Client {
 
     // ========== CONSTRUCTORS ==========
     public Client() {}
+
+
+    public Client(UUID publicId, String name, String phone) {
+        this.publicId = publicId;
+        this.name = name;
+        this.phone = phone;
+    }
     // ==================================
 
     // ========== GETTERS ==========

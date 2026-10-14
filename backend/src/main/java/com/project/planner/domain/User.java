@@ -36,6 +36,11 @@ public class User {
         this.passwordHash = passwordHash;
         this.role = role;
     }
+
+    public User(String email, String passwordHash) {
+        this.email = email;
+        this.passwordHash = passwordHash;
+    }
     // ==================================
 
     // ========== GETTERS ==========
