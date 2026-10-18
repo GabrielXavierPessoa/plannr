@@ -4,7 +4,6 @@ import com.project.planner.domain.Client;
 import com.project.planner.domain.User;
 import com.project.planner.dto.client.ClientRequestDTO;
 import com.project.planner.dto.client.ClientResponseDTO;
-import com.project.planner.exception.BadRequestException;
 import com.project.planner.exception.BusinessRulesException;
 import com.project.planner.exception.ResourceNotFoundException;
 import com.project.planner.repository.ClientRepository;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -43,6 +43,18 @@ public class ClientService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public ClientResponseDTO findById(UUID publicId) {
+
+        if(!clientRepository.existsByPublicId(publicId)) {
+            throw new ResourceNotFoundException("Id not found!");
+        }
+
+        Client client = clientRepository.findByPublicId(publicId);
+
+        return new ClientResponseDTO(client);
+    }
+
     @Transactional
     public ClientResponseDTO save(ClientRequestDTO dto) {
         if(userRepository.existsByEmail(dto.getEmail())) {
@@ -60,6 +72,34 @@ public class ClientService {
         Client saveClient = clientRepository.save(client);
 
         return new ClientResponseDTO(saveClient);
+    }
+
+    @Transactional
+    public ClientResponseDTO update(UUID publicId, ClientRequestDTO dto) {
+        if (!clientRepository.existsByPublicId(publicId)) {
+            throw new ResourceNotFoundException("Id not found");
+        }
+
+        Client catchClient = clientRepository.findByPublicId(publicId);
+
+        if(dto.getName() != null) {
+            catchClient.setName(dto.getName());
+        }
+
+        if(dto.getPhone() != null) {
+            catchClient.setPhone(dto.getPhone());
+        }
+
+        if(dto.getEmail() != null) {
+            catchClient.getUser().setEmail(dto.getEmail());
+        }
+
+        if(dto.getPassword() != null) {
+            String passwordEncode = passwordEncoder.encode(dto.getPassword());
+            catchClient.getUser().setPasswordHash(passwordEncode);
+        }
+
+        return new ClientResponseDTO(catchClient);
     }
 
     @Transactional
