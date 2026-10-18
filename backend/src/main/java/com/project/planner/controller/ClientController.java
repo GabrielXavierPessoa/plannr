@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/clients")
@@ -24,9 +25,14 @@ public class ClientController {
     public ResponseEntity<List<ClientResponseDTO>> findAll() {
         List<ClientResponseDTO> response = clientService.findAll();
 
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(response);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{publicId}")
+    public ResponseEntity<ClientResponseDTO> findById(@PathVariable UUID publicId) {
+        ClientResponseDTO response = clientService.findById(publicId);
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping
@@ -36,5 +42,12 @@ public class ClientController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @PutMapping("/{publicId}")
+    public ResponseEntity<ClientResponseDTO> update(@PathVariable UUID publicId, @Valid @RequestBody ClientRequestDTO dto ) {
+        ClientResponseDTO response = clientService.update(publicId, dto);
+
+        return ResponseEntity.ok(response);
     }
 }
