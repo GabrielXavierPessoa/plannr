@@ -73,7 +73,7 @@ public class GlobalHandlerException {
 
         return buildRequestError(
                 HttpStatus.BAD_REQUEST,
-                ex.getMessage(),
+                "Field(s) error contain",
                 errors
         );
     }

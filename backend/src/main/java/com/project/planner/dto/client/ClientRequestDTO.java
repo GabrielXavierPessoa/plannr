@@ -20,10 +20,6 @@ public class ClientRequestDTO {
     private String email;
 
     @NotBlank(message = "A senha esta em vazia")
-    @Pattern(
-            regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\\-_=+]).{8,20}$",
-            message = "Invalid password format. Must contain uppercase, lowercase, number and special char."
-    )
     private String password;
 
     // ========== CONSTRUCTOR ==========
