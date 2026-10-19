@@ -45,9 +45,16 @@ public class ClientController {
     }
 
     @PutMapping("/{publicId}")
-    public ResponseEntity<ClientResponseDTO> update(@PathVariable UUID publicId, @Valid @RequestBody ClientRequestDTO dto ) {
+    public ResponseEntity<ClientResponseDTO> update(@PathVariable UUID publicId, @RequestBody ClientRequestDTO dto ) {
         ClientResponseDTO response = clientService.update(publicId, dto);
 
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{publicId}")
+    public ResponseEntity<Void> deleteById(@PathVariable UUID publicId) {
+        clientService.deleteById(publicId);
+
+        return ResponseEntity.noContent().build();
     }
 }
