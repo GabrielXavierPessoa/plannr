@@ -46,11 +46,8 @@ public class ClientService {
     @Transactional(readOnly = true)
     public ClientResponseDTO findById(UUID publicId) {
 
-        if(!clientRepository.existsByPublicId(publicId)) {
-            throw new ResourceNotFoundException("Id not found!");
-        }
-
-        Client client = clientRepository.findByPublicId(publicId);
+        Client client = clientRepository.findByPublicId(publicId)
+                .orElseThrow(() -> new ResourceNotFoundException("Id not found!"));
 
         return new ClientResponseDTO(client);
     }
@@ -76,11 +73,9 @@ public class ClientService {
 
     @Transactional
     public ClientResponseDTO update(UUID publicId, ClientRequestDTO dto) {
-        if (!clientRepository.existsByPublicId(publicId)) {
-            throw new ResourceNotFoundException("Id not found");
-        }
 
-        Client catchClient = clientRepository.findByPublicId(publicId);
+        Client catchClient = clientRepository.findByPublicId(publicId)
+                .orElseThrow(() -> new ResourceNotFoundException("Id not found!"));
 
         if(dto.getName() != null) {
             catchClient.setName(dto.getName());
@@ -103,11 +98,11 @@ public class ClientService {
     }
 
     @Transactional
-    public void deleteById(Long id) {
-        if(!clientRepository.existsById(id) || !userRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Id " + id + "not found");
-        }
+    public void deleteById(UUID publicId) {
 
-        clientRepository.deleteById(id);
+        Client client = clientRepository.findByPublicId(publicId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Id not found!"));
+
+        clientRepository.delete(client);
     }
 }
