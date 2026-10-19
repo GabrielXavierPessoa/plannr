@@ -14,8 +14,6 @@ public class Specialty {
     @Column(name = "name", length = 40, nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "specialty")
-    private Provider provider;
 
     // ========== CONSTRUCTORS ==========
     public Specialty() {}
@@ -30,10 +28,6 @@ public class Specialty {
         return name;
     }
 
-    public Provider getProvider() {
-        return provider;
-    }
-
     // =============================
 
     // ========== SETTERS ==========
@@ -41,8 +35,5 @@ public class Specialty {
         this.name = name;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
     // =============================
 }
