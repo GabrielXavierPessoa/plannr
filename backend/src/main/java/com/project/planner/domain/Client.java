@@ -32,7 +32,6 @@ public class Client {
     // ========== CONSTRUCTORS ==========
     public Client() {}
 
-
     public Client(UUID publicId, String name, String phone) {
         this.publicId = publicId;
         this.name = name;

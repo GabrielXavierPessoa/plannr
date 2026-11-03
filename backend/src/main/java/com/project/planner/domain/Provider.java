@@ -17,7 +17,7 @@ public class Provider {
 
     @Column(name = "public_id", length = 36,nullable = false, unique = true)
     @JdbcTypeCode(SqlTypes.CHAR)
-    private UUID public_id = UUID.randomUUID();
+    private UUID public_id;
 
     @Column(name = "name", length = 255, nullable = false)
     private String name;
@@ -31,7 +31,18 @@ public class Provider {
     private Specialty specialty;
 
     // ========== CONSTRUCTORS ==========
-    public Provider() {}
+    protected Provider() {}
+
+    public Provider(String name, String email, String passwordHash, Specialty specialty) {
+        this.public_id = UUID.randomUUID();
+        this.name = name;
+        this.user = new User(
+                email,
+                passwordHash,
+                RoleUser.provider
+        );
+        this.specialty = specialty;
+    }
     // ==================================
 
     // ========== GETTERS ==========
